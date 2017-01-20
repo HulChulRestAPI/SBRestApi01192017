@@ -17,6 +17,7 @@ import com.party.hulchul.model.Vendor;
  * @author RKottak
  *
  */
+
 @RequestMapping("/v1/customer")
 @RestController
 public class CustomerDetailsController {
