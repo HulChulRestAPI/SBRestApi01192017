@@ -26,4 +26,12 @@ public class VendorController {
         vendorList.add(new Vendor(100,"Vendor FN","Vendor LN","vendorFN.LN@gmail.com"));
         return vendorList;
     }
+	
+	@RequestMapping("/vendorContDtls")
+    public List<Vendor> getVendorContDtls() 
+    {
+        List<Vendor> vendorList = new ArrayList<Vendor>();
+        vendorList.add(new Vendor(100,"Vendor FN","Vendor LN","vendorFN.LN@gmail.com"));
+        return vendorList;
+    }
 }

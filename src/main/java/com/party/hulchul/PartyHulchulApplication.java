@@ -10,11 +10,6 @@ import org.springframework.context.ApplicationContext;
 @EnableCaching
 public class PartyHulchulApplication {
 
-	/*@RequestMapping("/")
-    String PartyHulchulApplication() {
-        return "Hello World!";
-    }*/
-	
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(PartyHulchulApplication.class, args);
 		System.out.println(ctx.getDisplayName());
