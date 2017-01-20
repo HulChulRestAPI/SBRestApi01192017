@@ -22,7 +22,6 @@ import com.party.hulchul.model.Vendor;
 @RestController
 public class CustomerDetailsController {
 
-
 	@RequestMapping(value = "/vendorDtls", method = RequestMethod.GET, params = {"customerId"})
     public List<Vendor> getCustomerDetails(@RequestParam(value="customerId") String customerID) 
     {
