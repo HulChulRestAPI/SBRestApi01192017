@@ -15,6 +15,7 @@ import com.party.hulchul.model.Vendor;
  * @author RKottak
  *
  */
+@RequestMapping("/v1/vendor")
 @RestController
 public class VendorController {
 
