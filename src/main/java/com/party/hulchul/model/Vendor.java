@@ -10,7 +10,7 @@ package com.party.hulchul.model;
 public class Vendor {
 
 	public Vendor() {
-
+		System.out.println("dd");
 	}
 
 	public Vendor(Integer id, String firstName, String lastName, String email) {
