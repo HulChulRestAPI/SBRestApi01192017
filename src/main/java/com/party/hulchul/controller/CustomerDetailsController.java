@@ -3,9 +3,6 @@
  */
 package com.party.hulchul.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 
@@ -17,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.party.hulchul.model.CustomerDetails;
-import com.party.hulchul.model.Vendor;
 import com.party.hulchul.service.CustomerDetailsService;
 
 /**
@@ -30,24 +26,11 @@ public class CustomerDetailsController {
     @Autowired
     CustomerDetailsService service;
     
-    
-	@RequestMapping(value = "/vendorDtls", method = RequestMethod.GET, headers = {"Content-type=application/json"}, params = {"customerId"})
-    public List<Vendor> getCustomerDetails(@RequestParam(value="customerId") String customerID) 
-    {
-		List<Vendor> vendorList = new ArrayList<Vendor>();
-		System.out.println("customerID:"+ customerID);
-		if(customerID != null && customerID.equals("10")){
-	        vendorList.add(new Vendor(100,"Vendor FN","Vendor LN","vendorFN.LN@gmail.com"));
-		}
-		vendorList.add(new Vendor(101,"Vendor FN","Vendor LN","vendorFN.LN@gmail.com"));
-        return vendorList;
+	@RequestMapping(value = "/getCustomer", method = RequestMethod.GET, params = {"customerId"})
+	@Consumes("application/json")
+	public CustomerDetails getCustomerDetails(@RequestParam(value="customerId") String customerID){
+        return service.findById(customerID);
     }
-	
-	@RequestMapping(value="/updateCustDtls", method = RequestMethod.POST, headers = {"Content-type=application/json"})
-    public void updateCustomerDtls(@RequestBody String payload) throws Exception {
-        System.out.println(payload);
-    }
-	
 	
     /**
 	 * @author  Soumya
@@ -56,7 +39,7 @@ public class CustomerDetailsController {
      * @param todoEntry
      * @return
      */
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = "/createCustomer", method = RequestMethod.POST)
     @Consumes("application/json")
     CustomerDetails createCustomerDetails(@RequestBody @Valid CustomerDetails todoEntry) {
         return service.create(todoEntry);
