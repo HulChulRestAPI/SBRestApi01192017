@@ -13,15 +13,55 @@ import com.party.hulchul.model.CustomerDetails;
 * @since   2017-01-21
 */
 
-interface CustomerDetailsService {
+public interface CustomerDetailsService {
 	
+	/**
+	 * @author  Soumya
+	 * @since   2017-01-22
+	 * 
+	 * This method is responsible for creating the Customer Details
+	 * 
+	 * @param customerDetails
+	 * @return
+	 */
 	CustomerDetails create(CustomerDetails customerDetails);
 	 
+	/**
+	 * @author  Soumya
+	 * @since   2017-01-22
+	 *  
+	 * This method is responsible for deleting the Customer Details
+	 * @param id
+	 * @return
+	 */
 	CustomerDetails delete(String id);
  
+    /**
+	 * @author  Soumya
+	 * @since   2017-01-22
+	 * 
+	 * This method is responsible for find all Customer Details
+     * @return
+     */
     List<CustomerDetails> findAll();
  
+    /**
+	 * @author  Soumya
+	 * @since   2017-01-22
+	 * 
+	 * This method is responsible for find specific Customer Details
+     * @param id
+     * @return
+     */
     CustomerDetails findById(String id);
  
+    /**
+	 * @author  Soumya
+	 * @since   2017-01-22
+	 *
+	 * This method is responsible for update the Customer Details
+     * @param customerDetails
+     * @return
+     */
     CustomerDetails update(CustomerDetails customerDetails);
 }
