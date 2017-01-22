@@ -75,7 +75,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService  {
      */
 	@Override
 	public CustomerDetails findById(String id) {
-		// TODO needs to be implement
+		repo.findOne(id);
 		return null;
 	}
 
