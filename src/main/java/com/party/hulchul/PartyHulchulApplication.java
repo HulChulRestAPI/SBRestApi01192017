@@ -13,7 +13,6 @@ public class PartyHulchulApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(PartyHulchulApplication.class, args);
 		System.out.println(ctx.getDisplayName());
-		System.out.println("This is my first Spring Boot Example");
 	}
 	
 }
