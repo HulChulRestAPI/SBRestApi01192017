@@ -3,9 +3,11 @@ package com.party.hulchul.dao;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.repository.Repository;
+
 import com.party.hulchul.model.CustomerDetails;
 
-interface CustomerDetailsRepository{
+interface CustomerDetailsRepository extends Repository<CustomerDetails, String> {
 	
 	/**
 	* <h1>The responsibility of this interface is to provide a common 
