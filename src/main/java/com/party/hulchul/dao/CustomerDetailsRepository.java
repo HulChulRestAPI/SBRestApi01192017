@@ -24,7 +24,7 @@ public interface CustomerDetailsRepository extends Repository<CustomerDetails, S
 	 * 
      * @param deleted
      */
-    void delete(CustomerDetails deleted);
+    boolean delete(String id);
     
     /**
 	 * @author  Soumya

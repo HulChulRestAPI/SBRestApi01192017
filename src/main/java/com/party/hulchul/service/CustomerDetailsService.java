@@ -34,7 +34,7 @@ public interface CustomerDetailsService {
 	 * @param id
 	 * @return
 	 */
-	CustomerDetails delete(String id);
+	boolean delete(String id);
  
     /**
 	 * @author  Soumya

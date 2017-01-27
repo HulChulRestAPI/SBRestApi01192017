@@ -47,9 +47,10 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService  {
 	 * @return
 	 */
 	@Override
-	public CustomerDetails delete(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean delete(String id) {
+		repo.delete(id);
+		
+		return true;
 	}
 
     /**

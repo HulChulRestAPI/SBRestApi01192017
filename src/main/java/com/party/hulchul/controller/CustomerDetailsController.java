@@ -28,8 +28,14 @@ public class CustomerDetailsController {
     
 	@RequestMapping(value = "/getCustomer", method = RequestMethod.GET, params = {"customerId"})
 	@Consumes("application/json")
-	public CustomerDetails getCustomerDetails(@RequestParam(value="customerId") String customerID){
-        return service.findById(customerID);
+	public CustomerDetails getCustomerDetails(@RequestParam(value="customerId") String customerId){
+        return service.findById(customerId);
+    }
+	
+	@RequestMapping(value = "/deleteCustomer", method = RequestMethod.GET, params = {"customerId"})
+	@Consumes("application/json")
+	public boolean deleteCustomerDetails(@RequestParam(value="customerId") String customerId){
+        return service.delete(customerId);
     }
 	
     /**
