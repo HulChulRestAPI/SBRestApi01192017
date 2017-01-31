@@ -73,6 +73,6 @@ public interface CustomerDetailsService {
 	 * @param searchString
 	 * @return
 	 */
-	List<Customer> searchCustomerByCustomStringDaoImpl(String searchString);
+	List<Customer> searchCustomerByCustomString(String searchString);
 
 }
