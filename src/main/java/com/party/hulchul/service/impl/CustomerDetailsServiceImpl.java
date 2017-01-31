@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.party.hulchul.dao.CustomerDetailsRepository;
+import com.party.hulchul.dao.CustomerSearchRepository;
+import com.party.hulchul.model.Customer;
 import com.party.hulchul.model.CustomerDetails;
 import com.party.hulchul.service.CustomerDetailsService;
 
@@ -22,6 +24,11 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService  {
 
 	@Autowired
 	private CustomerDetailsRepository repo;
+	
+	
+	@Autowired
+	private CustomerSearchRepository searchRepo;
+	
 	
 	/**
 	 * @author  Soumya
@@ -94,4 +101,12 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService  {
 		return null;
 	}
 
+	
+	@Override
+	public List<Customer> searchCustomerByCustomString(String searchString) {
+		return searchRepo.searchCustomerByCustomString(searchString);
+	}
+
+	
+	
 }

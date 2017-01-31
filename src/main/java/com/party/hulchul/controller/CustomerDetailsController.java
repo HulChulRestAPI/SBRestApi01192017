@@ -57,7 +57,7 @@ public class CustomerDetailsController {
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public @ResponseBody String searchCustomerDetails(@RequestParam String search, HttpServletRequest request) {
 
-		return JsonParserUtil.toString(service.searchCustomerByCustomStringDaoImpl(search));
+		return JsonParserUtil.toString(service.searchCustomerByCustomString(search));
 
 	}
 
