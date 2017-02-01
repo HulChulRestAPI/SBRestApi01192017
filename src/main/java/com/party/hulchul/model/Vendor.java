@@ -1,37 +1,50 @@
-/**
- * 
- */
 package com.party.hulchul.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.PersistenceConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
- * @author RKottak
+ * <h1>DTO or Value Object that represents the vendorDetails collection</h1>
  *
+ * @author Rajesh K
+ * @version 1.0
+ * @since 2017-01-30
  */
+
+@Document(collection = "vendorDetails")
 public class Vendor {
 
-	public Vendor() {
-		System.out.println("dd");
-	}
-
-	public Vendor(Integer id, String firstName, String lastName, String email) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-	}
-
-	private Integer id;
+	@Id
+	private String vendorId;
 	private String firstName;
 	private String lastName;
-	private String email;
+	private String emailId;
+	private String phone;
+	private String billingAddress;
+	private String postalAddress;
+	private String notification;
 
-	public Integer getId() {
-		return id;
+	@PersistenceConstructor
+	public Vendor(String vendorId, String firstName, String lastName, String emailId, String phone,
+			String billingAddress, String postalAddress, String notification) {
+		super();
+		this.vendorId = vendorId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.emailId = emailId;
+		this.phone = phone;
+		this.billingAddress = billingAddress;
+		this.postalAddress = postalAddress;
+		this.notification = notification;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public String getVendorId() {
+		return vendorId;
+	}
+
+	public void setVendorId(String vendorId) {
+		this.vendorId = vendorId;
 	}
 
 	public String getFirstName() {
@@ -50,16 +63,51 @@ public class Vendor {
 		this.lastName = lastName;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getEmailId() {
+		return emailId;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getBillingAddress() {
+		return billingAddress;
+	}
+
+	public void setBillingAddress(String billingAddress) {
+		this.billingAddress = billingAddress;
+	}
+
+	public String getPostalAddress() {
+		return postalAddress;
+	}
+
+	public void setPostalAddress(String postalAddress) {
+		this.postalAddress = postalAddress;
+	}
+
+	public String getNotification() {
+		return notification;
+	}
+
+	public void setNotification(String notification) {
+		this.notification = notification;
 	}
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+		return "Vendor [VendorId=" + vendorId + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", emailId=" + emailId + ", phone=" + phone + ", billingAddress=" + billingAddress
+				+ ", postalAddress=" + postalAddress + ", notification=" + notification + "]";
 	}
+
 }

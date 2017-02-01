@@ -55,10 +55,15 @@ public class CustomerDetailsController {
 	}
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public @ResponseBody String searchCustomerDetails(@RequestParam String search, HttpServletRequest request) {
+	public @ResponseBody String searchCustomerDetails(@RequestParam(value = "search") String search, HttpServletRequest request) {
 
 		return JsonParserUtil.toString(service.searchCustomerByCustomString(search));
 
 	}
 
+	@RequestMapping(value = "/updateCustomer", method = RequestMethod.POST)
+	@Consumes("application/json")
+	CustomerDetails updateCustomer(@RequestBody @Valid CustomerDetails todoEntry) {
+		return service.update(todoEntry);
+	}
 }

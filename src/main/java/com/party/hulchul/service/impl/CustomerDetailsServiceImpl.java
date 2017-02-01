@@ -97,7 +97,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService  {
      */
 	@Override
 	public CustomerDetails update(CustomerDetails customerDetails) {
-		// TODO needs to be implement
+		repo.save(customerDetails);
 		return null;
 	}
 
