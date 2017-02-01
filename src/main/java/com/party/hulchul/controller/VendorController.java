@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.party.hulchul.model.VendorDetails;
@@ -31,4 +32,23 @@ public class VendorController {
 	VendorDetails createVendor(@RequestBody @Valid VendorDetails todoEntry) {
 		return service.create(todoEntry);
 	}
+	
+	@RequestMapping(value = "/updateVendor", method = RequestMethod.POST)
+	@Consumes("application/json")
+	VendorDetails updateVendor(@RequestBody @Valid VendorDetails todoEntry) {
+		return service.update(todoEntry);
+	}
+	
+	@RequestMapping(value = "/getVendor", method = RequestMethod.GET, params = { "VendorId" })
+	@Consumes("application/json")
+	public VendorDetails getVendor(@RequestParam(value = "vendorId") String vendorId) {
+		return service.findById(vendorId);
+	}
+
+	@RequestMapping(value = "/deleteVendor", method = RequestMethod.GET, params = { "vendorId" })
+	@Consumes("application/json")
+	public boolean deleteVendor(@RequestParam(value = "vendorId") String vendorId) {
+		return service.delete(vendorId);
+	}
+
 }
