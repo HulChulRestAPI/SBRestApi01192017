@@ -3,13 +3,17 @@
  */
 package com.party.hulchul.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.validation.Valid;
+import javax.ws.rs.Consumes;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.party.hulchul.model.Vendor;
+import com.party.hulchul.model.VendorDetails;
+import com.party.hulchul.service.VendorService;
 
 /**
  * @author RKottak
@@ -19,19 +23,12 @@ import com.party.hulchul.model.Vendor;
 @RestController
 public class VendorController {
 
-	@RequestMapping("/vendorDtls")
-    public List<Vendor> getVendors() 
-    {
-        List<Vendor> vendorList = new ArrayList<Vendor>();
-        vendorList.add(new Vendor(100,"Vendor FN","Vendor LN","vendorFN.LN@gmail.com"));
-        return vendorList;
-    }
+	@Autowired
+	VendorService service;
 	
-	@RequestMapping("/vendorContDtls")
-    public List<Vendor> getVendorContDtls() 
-    {
-        List<Vendor> vendorList = new ArrayList<Vendor>();
-        vendorList.add(new Vendor(100,"Vendor FN","Vendor LN","vendorFN.LN@gmail.com"));
-        return vendorList;
-    }
+	@RequestMapping(value = "/createVendor", method = RequestMethod.POST)
+	@Consumes("application/json")
+	VendorDetails createVendor(@RequestBody @Valid VendorDetails todoEntry) {
+		return service.create(todoEntry);
+	}
 }
