@@ -39,7 +39,7 @@ public class VendorController {
 		return service.update(todoEntry);
 	}
 	
-	@RequestMapping(value = "/getVendor", method = RequestMethod.GET, params = { "VendorId" })
+	@RequestMapping(value = "/getVendor", method = RequestMethod.GET, params = { "vendorId" })
 	@Consumes("application/json")
 	public VendorDetails getVendor(@RequestParam(value = "vendorId") String vendorId) {
 		return service.findById(vendorId);
