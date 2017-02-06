@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.data.repository.Repository;
 
-import com.party.hulchul.model.VendorDetails;
+import com.party.hulchul.request.VendorDetails;
 
 /**
 * <h1>The responsibility of this interface is to provide a common 
