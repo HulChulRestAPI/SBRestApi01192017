@@ -1,4 +1,4 @@
-package com.party.hulchul.model;
+package com.party.hulchul.request;
 
 import java.io.Serializable;
 import java.util.HashMap;
