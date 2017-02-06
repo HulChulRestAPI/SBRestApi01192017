@@ -2,7 +2,7 @@ package com.party.hulchul.service;
 
 import java.util.List;
 
-import com.party.hulchul.model.VendorDetails;
+import com.party.hulchul.request.VendorDetails;
 
 /**
  * <h1>The responsibility of this interface is to provide a common facade for

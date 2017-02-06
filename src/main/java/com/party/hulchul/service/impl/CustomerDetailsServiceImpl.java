@@ -5,10 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.party.hulchul.dao.CustomerDetailsRepository;
+import com.party.hulchul.dao.CustomerRepository;
 import com.party.hulchul.dao.CustomerSearchRepository;
+import com.party.hulchul.mapper.CustomerDetailsToCustomerMapper;
 import com.party.hulchul.model.Customer;
-import com.party.hulchul.model.CustomerDetails;
+import com.party.hulchul.request.CustomerDetails;
 import com.party.hulchul.service.CustomerDetailsService;
 
 /**
@@ -23,7 +24,7 @@ import com.party.hulchul.service.CustomerDetailsService;
 public class CustomerDetailsServiceImpl implements CustomerDetailsService  {
 
 	@Autowired
-	private CustomerDetailsRepository repo;
+	private CustomerRepository repo;
 	
 	
 	@Autowired
@@ -40,8 +41,9 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService  {
 	 * @return
 	 */
 	@Override
-	public CustomerDetails create(CustomerDetails customerDetails) {
-		repo.save(customerDetails);
+	public Customer create(CustomerDetails customerDetails) {
+		Customer customer = CustomerDetailsToCustomerMapper.jsonRreqestToCustomerEntityMapper(customerDetails);
+		repo.save(customer);
 		return null;
 	}
 
@@ -54,7 +56,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService  {
 	 * @return
 	 */
 	@Override
-	public boolean delete(String id) {
+	public boolean delete(Long id) {
 		repo.delete(id);
 		
 		return true;
@@ -68,7 +70,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService  {
      * @return
      */
 	@Override
-	public List<CustomerDetails> findAll() {
+	public List<Customer> findAll() {
 		// TODO needs to be implement
 		return null;
 	}
@@ -82,7 +84,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService  {
      * @return
      */
 	@Override
-	public CustomerDetails findById(String id) {
+	public Customer findById(Long id) {
 		repo.findOne(id);
 		return null;
 	}
@@ -96,8 +98,8 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService  {
      * @return
      */
 	@Override
-	public CustomerDetails update(CustomerDetails customerDetails) {
-		repo.save(customerDetails);
+	public Customer update(Customer customer) {
+		repo.save(customer);
 		return null;
 	}
 

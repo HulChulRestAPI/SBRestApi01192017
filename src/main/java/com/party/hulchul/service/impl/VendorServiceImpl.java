@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.party.hulchul.dao.VendorRepository;
-import com.party.hulchul.model.VendorDetails;
+import com.party.hulchul.request.VendorDetails;
 import com.party.hulchul.service.VendorService;
 
 /**
