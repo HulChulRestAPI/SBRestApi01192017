@@ -10,6 +10,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.party.hulchul.request.Address;
+
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -40,10 +42,10 @@ public class CustomerDetails implements Serializable {
 	private Phone phone;
 	@JsonProperty("billingAddress")
 	@Valid
-	private BillingAddress billingAddress;
+	private Address billingAddress;
 	@JsonProperty("postalAddress")
 	@Valid
-	private PostalAddress postalAddress;
+	private Address postalAddress;
 	@JsonProperty("notification")
 	private String notification;
 	@JsonIgnore
@@ -78,7 +80,7 @@ public class CustomerDetails implements Serializable {
 	 * @param firstName
 	 */
 	public CustomerDetails(String id, String firstName, String lastName, String emailId, Phone phone,
-			BillingAddress billingAddress, PostalAddress postalAddress, String notification) {
+			Address billingAddress, Address postalAddress, String notification) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -141,23 +143,25 @@ public class CustomerDetails implements Serializable {
 	}
 
 	@JsonProperty("billingAddress")
-	public BillingAddress getBillingAddress() {
+	public Address getBillingAddress() {
 		return billingAddress;
 	}
 
 	@JsonProperty("billingAddress")
-	public void setBillingAddress(BillingAddress billingAddress) {
+	public void setBillingAddress(Address billingAddress) {
 		this.billingAddress = billingAddress;
+		this.billingAddress.setAddressType("billingAddress");
 	}
 
 	@JsonProperty("postalAddress")
-	public PostalAddress getPostalAddress() {
+	public Address getPostalAddress() {
 		return postalAddress;
 	}
 
 	@JsonProperty("postalAddress")
-	public void setPostalAddress(PostalAddress postalAddress) {
+	public void setPostalAddress(Address postalAddress) {
 		this.postalAddress = postalAddress;
+		this.postalAddress.setAddressType("postalAddress");
 	}
 
 	@JsonProperty("notification")

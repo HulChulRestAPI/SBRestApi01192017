@@ -3,47 +3,59 @@ package com.party.hulchul.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 /**
- * <h1>DTO or Value Object that represents the customerDetails collection</h1>
+ * <h1>Model Object that represents the customerDetails collection</h1>
  *
  * @author Soumya
  * @version 1.0
  * @since 2017-01-28
  */
 
-@Document(collection = "customerDetails")
+@Document(collection = "CUSTOMER")
 public class Customer {
 
 	@Id
-	private String customerId;
+	@Field
+	private Long customerId;
+	@Field
 	private String firstName;
+	@Field
 	private String lastName;
+	@Field
 	private String emailId;
+	/*@Field
 	private String phone;
+	@Field
 	private String billingAddress;
-	private String postalAddress;
+	@Field
+	private String postalAddress;*/
+	@Field
 	private String notification;
 
+	public Customer() {
+	}
+
 	@PersistenceConstructor
-	public Customer(String customerId, String firstName, String lastName, String emailId, String phone,
+	public Customer(Long customerId, String firstName, String lastName, String emailId, String phone,
 			String billingAddress, String postalAddress, String notification) {
 		super();
 		this.customerId = customerId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.emailId = emailId;
-		this.phone = phone;
+		/*this.phone = phone;
 		this.billingAddress = billingAddress;
-		this.postalAddress = postalAddress;
+		this.postalAddress = postalAddress;*/
 		this.notification = notification;
 	}
 
-	public String getCustomerId() {
+	public Long getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(String customerId) {
+	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;
 	}
 
@@ -71,7 +83,7 @@ public class Customer {
 		this.emailId = emailId;
 	}
 
-	public String getPhone() {
+	/*public String getPhone() {
 		return phone;
 	}
 
@@ -93,7 +105,7 @@ public class Customer {
 
 	public void setPostalAddress(String postalAddress) {
 		this.postalAddress = postalAddress;
-	}
+	}*/
 
 	public String getNotification() {
 		return notification;
@@ -106,8 +118,7 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", emailId=" + emailId + ", phone=" + phone + ", billingAddress=" + billingAddress
-				+ ", postalAddress=" + postalAddress + ", notification=" + notification + "]";
+				+ ", emailId=" + emailId + ", notification=" + notification + "]";
 	}
 
 }
