@@ -16,5 +16,5 @@ public class PartyHulchulApplication {
 		ApplicationContext ctx = SpringApplication.run(PartyHulchulApplication.class, args);
 		System.out.println(ctx.getDisplayName());
 	}
-	
+
 }
