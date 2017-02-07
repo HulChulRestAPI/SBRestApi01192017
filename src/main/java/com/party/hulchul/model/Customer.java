@@ -1,12 +1,17 @@
 package com.party.hulchul.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 /**
- * <h1>Model Object that represents the customerDetails collection</h1>
+ * <h1>Model Object that represents the CUSTOMER collection</h1>
  *
  * @author Soumya
  * @version 1.0
@@ -25,12 +30,18 @@ public class Customer {
 	private String lastName;
 	@Field
 	private String emailId;
-	/*@Field
-	private String phone;
-	@Field
-	private String billingAddress;
-	@Field
-	private String postalAddress;*/
+
+	@Transient
+	private Address postalAddress;
+	@Transient
+	private Address billingAddress;
+
+	@DBRef(db = "ADDRESS")
+	private List<Address> addressList = new ArrayList<Address>();
+
+	@DBRef(db = "PHONE")
+	private Phone phone;
+
 	@Field
 	private String notification;
 
@@ -38,16 +49,15 @@ public class Customer {
 	}
 
 	@PersistenceConstructor
-	public Customer(Long customerId, String firstName, String lastName, String emailId, String phone,
-			String billingAddress, String postalAddress, String notification) {
+	public Customer(Long customerId, String firstName, String lastName, String emailId, List<Address> addressList,
+			Phone phone, String notification) {
 		super();
 		this.customerId = customerId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.emailId = emailId;
-		/*this.phone = phone;
-		this.billingAddress = billingAddress;
-		this.postalAddress = postalAddress;*/
+		this.addressList = addressList;
+		this.phone = phone;
 		this.notification = notification;
 	}
 
@@ -83,42 +93,51 @@ public class Customer {
 		this.emailId = emailId;
 	}
 
-	/*public String getPhone() {
+	public Phone getPhone() {
 		return phone;
 	}
 
-	public void setPhone(String phone) {
+	public void setPhone(Phone phone) {
 		this.phone = phone;
 	}
 
-	public String getBillingAddress() {
-		return billingAddress;
-	}
-
-	public void setBillingAddress(String billingAddress) {
-		this.billingAddress = billingAddress;
-	}
-
-	public String getPostalAddress() {
-		return postalAddress;
-	}
-
-	public void setPostalAddress(String postalAddress) {
-		this.postalAddress = postalAddress;
-	}*/
-
 	public String getNotification() {
 		return notification;
+	}
+
+	public List<Address> getAddressList() {
+		return addressList;
+	}
+
+	public void setAddressList(List<Address> addressList) {
+		this.addressList = addressList;
 	}
 
 	public void setNotification(String notification) {
 		this.notification = notification;
 	}
 
+	public Address getPostalAddress() {
+		return postalAddress;
+	}
+
+	public void setPostalAddress(Address postalAddress) {
+		this.postalAddress = postalAddress;
+	}
+
+	public Address getBillingAddress() {
+		return billingAddress;
+	}
+
+	public void setBillingAddress(Address billingAddress) {
+		this.billingAddress = billingAddress;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", emailId=" + emailId + ", notification=" + notification + "]";
+				+ ", emailId=" + emailId + ", postalAddress=" + postalAddress + ", billingAddress=" + billingAddress
+				+ ", addressList=" + addressList + ", phone=" + phone + ", notification=" + notification + "]";
 	}
 
 }

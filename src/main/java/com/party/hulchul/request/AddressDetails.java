@@ -24,7 +24,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "addressType", "addressLine1", "addressLine2", "addressLine3", "zip", "city", "state", "country" })
-public class Address implements Serializable {
+public class AddressDetails implements Serializable {
 
 	@JsonProperty("addressType")
 	private String addressType;
@@ -55,7 +55,7 @@ public class Address implements Serializable {
 	 * @since 2017-01-21
 	 * 
 	 */
-	public Address() {
+	public AddressDetails() {
 	}
 
 	/**
@@ -71,7 +71,7 @@ public class Address implements Serializable {
 	 * @param country
 	 * @param city
 	 */
-	public Address(String addressType, String addressLine1, String addressLine2, String addressLine3, String zip, String city,
+	public AddressDetails(String addressType, String addressLine1, String addressLine2, String addressLine3, String zip, String city,
 			String state, String country) {
 		super();
 		this.addressType = addressType;
@@ -190,10 +190,10 @@ public class Address implements Serializable {
 		if (other == this) {
 			return true;
 		}
-		if ((other instanceof Address) == false) {
+		if ((other instanceof AddressDetails) == false) {
 			return false;
 		}
-		Address rhs = ((Address) other);
+		AddressDetails rhs = ((AddressDetails) other);
 		return new EqualsBuilder().append(addressType, rhs.addressType).append(addressLine1, rhs.addressLine1).append(addressLine2, rhs.addressLine2)
 				.append(addressLine3, rhs.addressLine3).append(zip, rhs.zip).append(city, rhs.city)
 				.append(state, rhs.state).append(country, rhs.country)

@@ -38,13 +38,13 @@ public class CustomerDetails implements Serializable {
 	private String emailId;
 	@JsonProperty("phone")
 	@Valid
-	private Phone phone;
+	private PhoneDetails phone;
 	@JsonProperty("billingAddress")
 	@Valid
-	private Address billingAddress;
+	private AddressDetails billingAddress;
 	@JsonProperty("postalAddress")
 	@Valid
-	private Address postalAddress;
+	private AddressDetails postalAddress;
 	@JsonProperty("notification")
 	private String notification;
 	@JsonIgnore
@@ -78,8 +78,8 @@ public class CustomerDetails implements Serializable {
 	 * @param billingAddress
 	 * @param firstName
 	 */
-	public CustomerDetails(String id, String firstName, String lastName, String emailId, Phone phone,
-			Address billingAddress, Address postalAddress, String notification) {
+	public CustomerDetails(String id, String firstName, String lastName, String emailId, PhoneDetails phone,
+			AddressDetails billingAddress, AddressDetails postalAddress, String notification) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -132,33 +132,33 @@ public class CustomerDetails implements Serializable {
 	}
 
 	@JsonProperty("phone")
-	public Phone getPhone() {
+	public PhoneDetails getPhone() {
 		return phone;
 	}
 
 	@JsonProperty("phone")
-	public void setPhone(Phone phone) {
+	public void setPhone(PhoneDetails phone) {
 		this.phone = phone;
 	}
 
 	@JsonProperty("billingAddress")
-	public Address getBillingAddress() {
+	public AddressDetails getBillingAddress() {
 		return billingAddress;
 	}
 
 	@JsonProperty("billingAddress")
-	public void setBillingAddress(Address billingAddress) {
+	public void setBillingAddress(AddressDetails billingAddress) {
 		this.billingAddress = billingAddress;
 		this.billingAddress.setAddressType("billingAddress");
 	}
 
 	@JsonProperty("postalAddress")
-	public Address getPostalAddress() {
+	public AddressDetails getPostalAddress() {
 		return postalAddress;
 	}
 
 	@JsonProperty("postalAddress")
-	public void setPostalAddress(Address postalAddress) {
+	public void setPostalAddress(AddressDetails postalAddress) {
 		this.postalAddress = postalAddress;
 		this.postalAddress.setAddressType("postalAddress");
 	}

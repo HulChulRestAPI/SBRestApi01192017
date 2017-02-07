@@ -75,5 +75,6 @@ public interface CustomerDetailsService {
 	 */
 	List<Customer> searchCustomerByCustomString(String searchString);
 
+	
 
 }

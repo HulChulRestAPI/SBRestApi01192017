@@ -1,19 +1,15 @@
 package com.party.hulchul.dao;
 
 import java.util.List;
-import java.util.Optional;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.Repository;
 
 import com.party.hulchul.model.Customer;
-import com.party.hulchul.request.CustomerDetails;
 
 /**
 * <h1>The responsibility of this interface is to provide a common 
-* facade for all the CRUD operations related to Customer Details.</h1>
+* facade for all the CRUD operations related to Customer.</h1>
 *
 * @author  Soumya
 * @version 1.0
@@ -54,9 +50,10 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
      * @param saved
      * @return
      */
-    Customer save(Customer saved);
+    @SuppressWarnings("unchecked")
+	Customer save(Customer customer);
     
-    //@Query("")
-    //Iterable<CustomerDetails> searchByName(String searchName);
+    @Query("{'firstName' : ?0 }")
+    Iterable<Customer> searchByFirstName(String searchName);
     
 }

@@ -24,7 +24,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "mobile", "home", "other" })
-public class Phone implements Serializable {
+public class PhoneDetails implements Serializable {
 
 	@JsonProperty("mobile")
 	private String mobile;
@@ -45,7 +45,7 @@ public class Phone implements Serializable {
 	 * @since 2017-01-21
 	 * 
 	 */
-	public Phone() {
+	public PhoneDetails() {
 	}
 
 	/**
@@ -54,7 +54,7 @@ public class Phone implements Serializable {
 	 * @param other
 	 * @param mobile
 	 */
-	public Phone(String mobile, String home, String other) {
+	public PhoneDetails(String mobile, String home, String other) {
 		super();
 		this.mobile = mobile;
 		this.home = home;
@@ -117,10 +117,10 @@ public class Phone implements Serializable {
 		if (other == this) {
 			return true;
 		}
-		if ((other instanceof Phone) == false) {
+		if ((other instanceof PhoneDetails) == false) {
 			return false;
 		}
-		Phone rhs = ((Phone) other);
+		PhoneDetails rhs = ((PhoneDetails) other);
 		return new EqualsBuilder().append(mobile, rhs.mobile).append(home, rhs.home).append(other, rhs.other)
 				.append(additionalProperties, rhs.additionalProperties).isEquals();
 	}

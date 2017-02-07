@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.party.hulchul.model.VendorDetails;
+import com.party.hulchul.request.VendorDetails;
 import com.party.hulchul.service.VendorService;
 
 /**
