@@ -32,7 +32,7 @@ public class CustomerSearchRepositoryImpl implements CustomerSearchRepository {
 		return mongoTemplate.find(Query.query(new Criteria().
 									orOperator(Criteria.where("firstName").regex(searchString,"i"),
 												Criteria.where("lastName").regex(searchString, "i"),
-												Criteria.where("emailAddress").regex(searchString, "i"))
+												Criteria.where("emailId").regex(searchString, "i"))
 									), Customer.class);
 		
 		
