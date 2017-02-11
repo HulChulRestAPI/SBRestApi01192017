@@ -55,7 +55,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 
 		List<Address> address = customer.getAddressList();
 		address.add(customer.getPostalAddress());
-		customer.getBillingAddress().setAddressId(15L);
+		customer.getBillingAddress().setAddressId(16L);
 		address.add(customer.getBillingAddress());
 		customer.setAddressList(address);
 
